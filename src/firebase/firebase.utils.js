@@ -11,10 +11,10 @@ const config = {
   appId: "1:926960939213:web:5ebddba318c7cbbfaff984",
 };
 
-export const createProfileDocument = async (userAuth, additionalData) => {
+export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
-  const userRef = firestore.doc(`/users/${userAuth.id}`);
+  const userRef = firestore.doc(`/users/${userAuth.uid}`);
   const snapshot = await userRef.get();
 
   if (!snapshot.exists) {
